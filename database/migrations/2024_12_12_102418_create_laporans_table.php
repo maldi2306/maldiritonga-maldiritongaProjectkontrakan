@@ -13,12 +13,11 @@ return new class extends Migration
     {
         Schema::create('laporans', function (Blueprint $table) {
             $table->id();
-            $table->date('tanggal_laporan');
+            $table->date('tanggal_pelaporan');
             $table->string('nama_pelapor');
-            $table->enum('keterangan', ['Kontrakan', 'Kos']);
-            $table->string('no_kamar_kontrakan');
-            $table->text('deskripsi_laporan');
-            $table->enum('status', ['Belum Diproses', 'Proses', 'Selesai']);
+            $table->string('no_kamar');
+            $table->string('status')->default('Kos/Kontrakan');
+            $table->text('deskripsi');
             $table->timestamps();
         });
     }

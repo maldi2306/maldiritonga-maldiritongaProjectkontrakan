@@ -9,51 +9,70 @@ class LaporanController extends Controller
 {
     public function index()
     {
-        $laporan = Laporan::all();
-        return view('laporan.index', compact('laporan'));
+        $laporans = Laporan::simplePaginate(10);
+    // atau
+    $laporans = Laporan::paginate(10);
+    return view('laporan', compact('laporans'));
     }
 
     public function create()
     {
-        return view('laporan.create');
+        return view('create_laporan');
     }
 
     public function store(Request $request)
     {
-        $laporan = new Laporan();
-        $laporan->tanggal_laporan = $request->tanggal_laporan;
-        $laporan->nama_pelapor = $request->nama_pelapor;
-        $laporan->status = $request->status;
-        $laporan->no_kamar_kontrakan = $request->no_kamar_kontrakan;
-        $laporan->deskripsi_laporan = $request->deskripsi_laporan;
-        $laporan->save();
-        return redirect()->route('laporan.index');
+        $request->validate([
+            'tanggal_pelaporan' => 'required|date',
+            'nama_pelapor' => 'required|string',
+            'no_kamar' => 'required|string',
+            'status' => 'required|string',
+            'deskripsi' => 'required|string',
+        ]);
+
+        Laporan::create($request->all());
+        
+        return back()->with('success', 'Laporan berhasil ditambahkan!');
     }
 
-    public function show(Laporan $laporan)
+    public function show($id)
     {
+        $laporan = Laporan::find($id);
         return view('laporan.show', compact('laporan'));
     }
 
-    public function edit(Laporan $laporan)
+    public function edit($id)
     {
+        $laporan = Laporan::find($id);
         return view('laporan.edit', compact('laporan'));
     }
 
-    public function update(Request $request, Laporan $laporan)
+    public function update(Request $request, $id)
     {
-        $laporan->tanggal_laporan = $request->tanggal_laporan;
-        $laporan->nama_pelapor = $request->nama_pelapor;
-        $laporan->status = $request->status;
-        $laporan->no_kamar_kontrakan = $request->no_kamar_kontrakan;
-        $laporan->deskripsi_laporan = $request->deskripsi_laporan;
-        $laporan->save();
-        return redirect()->route('laporan.index');
+        $request->validate([
+            'tanggal_pelaporan' => 'required|date',
+            'nama_pelapor' => 'required|string',
+            'no_kamar' => 'required|string',
+            'status' => 'required|string',
+            'deskripsi' => 'required|string',
+        ]);
+
+        $laporan = Laporan::find($id);
+        $laporan->update($request->all());
+        return redirect()->route('laporan.index')->with('success', 'Laporan berhasil diupdate!');
     }
 
-    public function destroy(Laporan $laporan)
-    {
+    public function destroy($id)
+{
+    $laporan = Laporan::find($id);
+
+    // Pastikan penghuni ditemukan
+    if ($laporan) {
         $laporan->delete();
-        return redirect()->route('laporan.index');
+        return redirect()->route('laporan.index')->with('success', 'Laporan berhasil dihapus.');
     }
+
+    return redirect()->route('laporan.index')->with('error', 'Penghuni tidak ditemukan.');
+}
+
 }

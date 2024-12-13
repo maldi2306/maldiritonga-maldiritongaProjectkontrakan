@@ -45,13 +45,14 @@
                             <td>{{ $item->no_kamar }}</td>
                             <td>{{ $item->no_telepon }}</td>
                             <td>
-                                <a href="/penghuni/{{ $item->id }}/edit" class="btn btn-info btn-sm">Edit</a>
-                                <form action="/penghuni/{{ $item->id }}" method="POST" class="d-inline">
+                                <a href="{{ route('penghuni.edit', $item->id) }}" class="btn btn-info btn-sm">Edit</a>
+                                <form action="{{ route('penghuni.destroy', $item->id) }}" method="POST" class="d-inline">
                                     @csrf
-                                    @method('delete')
+                                    @method('DELETE')
                                     <button class="btn btn-danger btn-sm"
-                                        onclick="return confirm('Yakin ingin menghapus data?')">Hapus</button>
+                                            onclick="return confirm('Yakin ingin menghapus data?')">Hapus</button>
                                 </form>
+                                                              
                             </td>
                         </tr>
                     @endforeach

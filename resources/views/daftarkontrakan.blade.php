@@ -45,20 +45,21 @@
                             <td>{{ $item->keterangan }}</td>
                             <td>
                                 @if ($item->foto)
-                                <a href="{{ Storage::url($item->foto) }}" target="blank">
-                                    <img src="{{ Storage::url($item->foto) }}" width= "50" alt="">
-                                </a>
+                                    <a href="{{ Storage::url($item->foto) }}" target="blank">
+                                        <img src="{{ Storage::url($item->foto) }}" width= "50" alt="">
+                                    </a>
                                 @endif
-                               
-                            </td>
+
+                                
+                            </td>
                             <td>Rp {{ number_format($item->harga, 2, ',', '.') }}</td>
                             <td>{{ $item->deskripsi }}</td>
                             <td>
                                 <a href="/kontrakan/{{ $item->id }}/edit" class="btn btn-info btn-sm">Edit</a>
-                                <form action="/kontrakan/{{ $item->id }}" method="POST" class="d-inline">
+                                <form action="{{ route('kontrakan.destroy', $item->id) }}" method="POST" class="d-inline">
                                     @csrf
-                                    @method('delete')
-                                    <button class="btn btn-danger btn-sm"
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm"
                                         onclick="return confirm('Yakin ingin menghapus data?')">Hapus</button>
                                 </form>
                             </td>

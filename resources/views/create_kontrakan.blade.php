@@ -40,6 +40,7 @@
                     <textarea name="deskripsi" id="deskripsi" class="form-control">{{ old('deskripsi') }}</textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Simpan</button>
+                <a href="/daftar" class="btn btn-secondary">BATAL</a>
             </form>
         </div>
     </div>

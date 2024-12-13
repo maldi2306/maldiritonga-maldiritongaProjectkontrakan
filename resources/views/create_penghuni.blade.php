@@ -45,6 +45,7 @@
                     @enderror
                 </div>
                 <button type="submit" class="btn btn-primary">Simpan</button>
+                <a href="/penghuni" class="btn btn-secondary">BATAL</a>
             </form>
         </div>
     </div>

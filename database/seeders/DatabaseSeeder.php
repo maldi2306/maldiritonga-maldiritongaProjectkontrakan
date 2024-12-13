@@ -21,5 +21,6 @@ class DatabaseSeeder extends Seeder
        // ]);
        \App\Models\kontrakan::factory(50)->create();
        \App\Models\penghuni::factory(50)->create();
+       \App\Models\laporan::factory(50)->create();
     }
 }
