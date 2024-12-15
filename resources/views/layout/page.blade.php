@@ -26,7 +26,7 @@
           <ul id="sidebarnav" style="margin: 0 auto; list-style: none; padding: 0;">
             <!-- Logo -->
             <li>
-              <a href="./index.html" class="text-nowrap logo-img" style="display: block; text-align: center; margin-bottom: -20px;">
+              <a class="text-nowrap logo-img" style="display: block; text-align: center; margin-bottom: -20px;">
                 <img src="/modern/src/assets/images/logos/logo.png" width="250" alt="" />
               </a>
               

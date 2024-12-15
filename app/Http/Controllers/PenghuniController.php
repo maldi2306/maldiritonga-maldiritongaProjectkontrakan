@@ -7,11 +7,27 @@ use App\Models\Penghuni;
 
 class PenghuniController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $penghunis = Penghuni::paginate(10);
+        // Query data dengan pencarian
+        $query = Penghuni::query();
+    
+        if ($request->has('q')) {
+            $query->where('nama', 'like', '%' . $request->q . '%')              // Kolom nama
+                  ->orWhere('usia', 'like', '%' . $request->q . '%')           // Kolom usia
+                  ->orWhere('status', 'like', '%' . $request->q . '%')         // Kolom status
+                  ->orWhere('no_kamar', 'like', '%' . $request->q . '%')       // Kolom no_kamar
+                  ->orWhere('no_telepon', 'like', '%' . $request->q . '%');    // Kolom no_telepon
+        }
+    
+        // Ambil data dengan pagination
+        $penghunis = $query->paginate(10);
+    
+        // Kirim data ke view
         return view('daftarpenghuni', compact('penghunis'));
     }
+    
+    
 
     public function create()
     {

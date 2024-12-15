@@ -13,19 +13,23 @@ class daftarkontrakan extends Controller
     {
         // Query data dengan pencarian (opsional)
         $query = Kontrakan::query();
-
+    
         if ($request->has('q')) {
-            $query->where('no', 'like', '%' . $request->q . '%')
-                  ->orWhere('no_kamar', 'like', '%' . $request->q . '%')
-                  ->orWhere('deskripsi', 'like', '%' . $request->q . '%');
+            $query->where('no_kamar', 'like', '%' . $request->q . '%')  // kolom 'no_kamar'
+                  ->orWhere('status', 'like', '%' . $request->q . '%')   // kolom 'status'
+                  ->orWhere('keterangan', 'like', '%' . $request->q . '%') // kolom 'keterangan'
+                  ->orWhere('harga', 'like', '%' . $request->q . '%')    // kolom 'harga'
+                  ->orWhere('deskripsi', 'like', '%' . $request->q . '%'); // kolom 'deskripsi'
         }
-
+    
         // Ambil data dengan pagination
         $kontrakans = $query->paginate(10);
-
+    
         // Kirim data ke view
         return view('daftarkontrakan', compact('kontrakans'));
     }
+    
+
 
     public function create()
     {

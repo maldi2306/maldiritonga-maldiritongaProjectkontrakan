@@ -1,5 +1,9 @@
 @extends('layout.page', ['title' => 'Daftar Kontrakan'])
 @section('content')
+<a class="text-nowrap logo-img" style="display: block; text-align: center; margin-bottom: -20px;">
+    <img src="/modern/src/assets/images/logos/logo.png" width="350" alt="" />
+  </a>
+
 <div class="col-md-12 d-flex align-items-center" style="margin-top: 10px; margin-left: 35px">
     <div class="tab-content ftco-animate" id="v-pills-tabContent">
         <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel"
@@ -8,11 +12,7 @@
                 
             </div>
             <div class="row">
-<div style="text-align: center; ">
-    <h1><b>Kontrakan & Kos Bapak Edi</b></h1>
-    <br><br>
-</div>
-
+               
 @foreach ($kontrakans as $item)
 
                 <div class="col-md-4 text-center" style="width: 360px">
