@@ -14,11 +14,6 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="nama_pelapor" class="form-label">Nama Pelapor</label>
-                    <input type="text" id="nama_pelapor" name="nama_pelapor" class="form-control" placeholder="Masukkan Nama Pelapor" required>
-                </div>
-
-                <div class="mb-3">
                     <label for="no_kamar" class="form-label">No Kamar</label>
                     <input type="text" id="no_kamar" name="no_kamar" class="form-control" placeholder="Masukkan No Kamar" required>
                 </div>

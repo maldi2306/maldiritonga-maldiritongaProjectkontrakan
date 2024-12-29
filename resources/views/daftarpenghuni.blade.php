@@ -16,11 +16,12 @@
                     </div>
                 </div>
             </form>
-
+            @if (auth()->user() && auth()->user()->role == 'admin')
             <!-- Tombol Tambah Data -->
             <div class="col-md-6 mb-3">
                 <a href="/penghuni/create" class="btn btn-primary btn-sm">Tambah Data</a>
             </div>
+            @endif
 
             <!-- Tabel Daftar Penghuni -->
             <table class="table table-striped">
@@ -32,7 +33,9 @@
                         <th>Status</th>
                         <th>No Kamar</th>
                         <th>No Telepon</th>
+                        @if (auth()->user() && auth()->user()->role == 'admin')
                         <th>Aksi</th>
+                        @endif
                     </tr>
                 </thead>
                 <tbody>
@@ -44,6 +47,7 @@
                             <td>{{ $item->status }}</td>
                             <td>{{ $item->no_kamar }}</td>
                             <td>{{ $item->no_telepon }}</td>
+                            @if (auth()->user() && auth()->user()->role == 'admin')
                             <td>
                                 <a href="{{ route('penghuni.edit', $item->id) }}" class="btn btn-info btn-sm">Edit</a>
                                 <form action="{{ route('penghuni.destroy', $item->id) }}" method="POST" class="d-inline">
@@ -54,6 +58,7 @@
                                 </form>
                                                               
                             </td>
+                            @endif
                         </tr>
                     @endforeach
                 </tbody>

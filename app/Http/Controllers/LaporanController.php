@@ -24,11 +24,12 @@ class LaporanController extends Controller
     {
         $request->validate([
             'tanggal_pelaporan' => 'required|date',
-            'nama_pelapor' => 'required|string',
+            'nama_pelapor' => 'nullable',
             'no_kamar' => 'required|string',
             'status' => 'required|string',
             'deskripsi' => 'required|string',
         ]);
+        $request['nama_pelapor'] = auth()->id();
 
         Laporan::create($request->all());
         

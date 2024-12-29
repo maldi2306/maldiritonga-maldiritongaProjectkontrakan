@@ -41,7 +41,7 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $laporan->tanggal_pelaporan }}</td>
-                            <td>{{ $laporan->nama_pelapor }}</td>
+                            <td>{{ $laporan->User->name }}</td>
                             <td>{{ $laporan->no_kamar }}</td>
                             <td>{{ $laporan->status }}</td>
                             <td>{{ $laporan->deskripsi }}</td>

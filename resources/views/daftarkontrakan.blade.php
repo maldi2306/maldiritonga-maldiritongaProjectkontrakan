@@ -16,12 +16,12 @@
                     </div>
                 </div>
             </form>
-
+            @if (auth()->user() && auth()->user()->role == 'admin')
             <!-- Tombol Tambah Data -->
             <div class="col-md-6 mb-3">
                 <a href="/daftar/create" class="btn btn-primary btn-sm">Tambah Data</a>
             </div>
-
+            @endif
             <!-- Tabel Daftar Kontrakan -->
             <table class="table table-striped">
                 <thead>
@@ -33,7 +33,9 @@
                         <th>Foto</th>
                         <th>Harga</th>
                         <th>Deskripsi</th>
+                        @if (auth()->user() && auth()->user()->role == 'admin')
                         <th>Aksi</th>
+                        @endif
                     </tr>
                 </thead>
                 <tbody>
@@ -54,6 +56,7 @@
                             </td>
                             <td>Rp {{ number_format($item->harga, 2, ',', '.') }}</td>
                             <td>{{ $item->deskripsi }}</td>
+                            @if (auth()->user() && auth()->user()->role == 'admin')
                             <td>
                                 <a href="/kontrakan/{{ $item->id }}/edit" class="btn btn-info btn-sm">Edit</a>
                                 <form action="{{ route('kontrakan.destroy', $item->id) }}" method="POST" class="d-inline">
@@ -63,6 +66,7 @@
                                         onclick="return confirm('Yakin ingin menghapus data?')">Hapus</button>
                                 </form>
                             </td>
+                            @endif
                         </tr>
                     @endforeach
                 </tbody>
