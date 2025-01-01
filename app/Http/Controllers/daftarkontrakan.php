@@ -116,6 +116,12 @@ public function destroy($id)
     // Redirect dengan pesan sukses
     return redirect()->route('daftar.index')->with('success', 'Data berhasil dihapus.');
 }
-
+public function detail($id)
+{
+    $kontrakan = Kontrakan::findOrFail($id);
+    return view('detail_daftarkontrakan', compact('kontrakan'));
+}
 
 }
+
+

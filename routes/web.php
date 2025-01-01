@@ -11,7 +11,7 @@ use App\Http\Controllers\Home;
 
 
 Route::middleware([Authenticate::class])->group(function(){
-    Route::resource('Dasboard', Home::class);
+Route::resource('Dasboard', Home::class);
 Route::resource('daftar', Daftarkontrakan::class);
 Route::resource('penghuni', PenghuniController::class);
 Route::resource('laporan', LaporanController::class);
@@ -24,10 +24,7 @@ Route::get('/penghuni/{id}/edit', [PenghuniController::class, 'edit'])->name('pe
 Route::put('/penghuni/{id}', [PenghuniController::class, 'update'])->name('penghuni.update');
 });
 
-
-
-
-
+Route::get('/kontrakan/{id}', [Daftarkontrakan::class, 'detail'])->name('detail_daftarkontrakan');
 
 Auth::routes();
 
