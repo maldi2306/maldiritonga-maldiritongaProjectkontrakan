@@ -163,8 +163,10 @@
               </a>
             </div>
             <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-              <h5 class="text-uppercase">NO Hp</h5>
-              <p class="text-dark mb-0"><i class="ti ti-phone fs-4"></i> +62 812-3456-7890</p>
+              <h5 class="text-uppercase">CHAT WA</h5>
+              <a href="https://wa.me/6281234567890" target="_blank" class="text-dark mb-0">
+                <i class="ti ti-phone fs-4"></i> +62 812-3456-7890
+            </a>            
             </div>
             <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
               <h5 class="text-uppercase">Location</h5>
